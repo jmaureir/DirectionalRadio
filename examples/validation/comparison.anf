@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scave:Analysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:scave="http://www.omnetpp.org/omnetpp/scave">
+  <inputs>
+    <inputs name="/DirectionalRadio/sim/examples/validation/results/Directional-SameChannel-*.vec"/>
+    <inputs name="/DirectionalRadio/sim/examples/validation/results/Directional-SameChannel-*.sca"/>
+    <inputs name="/DirectionalRadio/sim/examples/validation/results/OmniDirectional-SameChannel-*.sca"/>
+    <inputs name="/DirectionalRadio/sim/examples/validation/results/OmniDirectional-SameChannel-*.vec"/>
+    <inputs/>
+  </inputs>
+  <datasets>
+    <datasets name="numCollisions">
+      <items xsi:type="scave:Add" filterPattern="attr:replication(#0) AND name(numCollision) "/>
+      <items xsi:type="scave:BarChart" name="Collision Number">
+        <properties name="Graph.Title" value="Collisions Number"/>
+        <groupByFields>module</groupByFields>
+        <barFields>experiment</barFields>
+      </items>
+    </datasets>
+    <datasets name="Throughput">
+      <items xsi:type="scave:Add" filterPattern="attr:replication(#0) and name(&quot;Throughput&quot;) " type="VECTOR"/>
+    </datasets>
+  </datasets>
+  <chartSheets>
+    <chartSheets name="default" charts="//@datasets/@datasets.0/@items.1"/>
+  </chartSheets>
+</scave:Analysis>
